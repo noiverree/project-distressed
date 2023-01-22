@@ -15,7 +15,7 @@ namespace ProjectDistressed.Player
         // Variables
         //==============================================================================
         
-        private Rigidbody2D playerRigidbody;
+        private Rigidbody2D rigidBody;
         private Animator animator;
 
         [Header("Attribute Configurations")]
@@ -32,10 +32,10 @@ namespace ProjectDistressed.Player
         
         #region MonoBehaviour methods
 
-        private void Start()
+        private void Awake()
         {
-            playerRigidbody = gameObject.GetComponent<Rigidbody2D>();
-            animator = gameObject.GetComponent<Animator>();
+            rigidBody = gameObject.GetComponentInParent<Rigidbody2D>();
+            animator = gameObject.GetComponentInParent<Animator>();
         }
 
 
@@ -58,21 +58,21 @@ namespace ProjectDistressed.Player
 
             if (joystickVector.x > 0)
             {
-                playerRigidbody.velocity = transform.right * movementSpeed;
+                rigidBody.velocity = transform.right * movementSpeed;
                 animator.SetBool("IsWalking", true);
                 animator.SetBool("IsFacingRight", true);
             }
 
             if (joystickVector.x < 0)
             {
-                playerRigidbody.velocity = (transform.right * -1) * movementSpeed;
+                rigidBody.velocity = (transform.right * -1) * movementSpeed;
                 animator.SetBool("IsWalking", true);
                 animator.SetBool("IsFacingRight", false);
             }
 
             if (joystickVector == Vector2.zero)
             {
-                playerRigidbody.velocity = Vector2.zero;
+                rigidBody.velocity = Vector2.zero;
                 animator.SetBool("IsWalking", false);
             }
         }
