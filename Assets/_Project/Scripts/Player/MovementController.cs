@@ -25,7 +25,6 @@ namespace ProjectDistressed.Player
         [SerializeField] private JoystickController joystick;
 
 
-        
         //==============================================================================
         // Functions
         //==============================================================================
@@ -37,7 +36,6 @@ namespace ProjectDistressed.Player
             rigidBody = gameObject.GetComponentInParent<Rigidbody2D>();
             animator = gameObject.GetComponentInParent<Animator>();
         }
-
 
 
         private void FixedUpdate()

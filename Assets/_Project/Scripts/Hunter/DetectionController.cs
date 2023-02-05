@@ -6,7 +6,7 @@ using UnityEngine;
 namespace ProjectDistressed.Hunter
 {
     /// <summary>
-    /// Controls target detection behaviour.
+    // Controls target detection behaviour.
     /// </summary>
     public class DetectionController : MonoBehaviour
     {
@@ -39,7 +39,14 @@ namespace ProjectDistressed.Hunter
             {
                 OnDetection?.Invoke();
             }
+
+            if (collider.gameObject.tag == "Player") 
+            {
+                Debug.Log("We Have Intruder !1!1");
+                GameObject.Find("Player").gameObject.SetActive(false);
+            }
         }
+
 
         #endregion
     }

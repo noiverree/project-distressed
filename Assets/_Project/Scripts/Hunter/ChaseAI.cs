@@ -42,7 +42,7 @@ namespace ProjectDistressed.Hunter
             DetectionController.OnDetection += Chase;
         }
 
-        #endregion
+        #endregion  
 
         #region ProjectDistressed methods
 
