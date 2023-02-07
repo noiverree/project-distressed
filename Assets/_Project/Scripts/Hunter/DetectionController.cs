@@ -47,7 +47,7 @@ namespace ProjectDistressed.Hunter
             }
         }
 
-
         #endregion
+        
     }
 }
