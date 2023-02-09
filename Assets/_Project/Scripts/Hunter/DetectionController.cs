@@ -1,7 +1,7 @@
 // Author   : Rifqi Candra
-// Date     : 22 January 2023
 
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace ProjectDistressed.Hunter
 {
@@ -11,42 +11,55 @@ namespace ProjectDistressed.Hunter
     public class DetectionController : MonoBehaviour
     {
         //==============================================================================
+        // Variables
+        //==============================================================================
+        private RaycastHit2D hit;
+        [SerializeField] private UnityEvent detectedEvent;
+
+
+
+        //==============================================================================
         // Functions
         //==============================================================================
-
-        #region Observer pattern
-
-        public delegate void OnDetectionEvent();
-        public static OnDetectionEvent OnDetection;
-
-        #endregion
-
         #region ProjectDistressed methods
-
         /// <summary>
         /// On trigger enter.
         /// </summary>
         /// <param name="collider"></param>
         private void OnTriggerEnter2D(Collider2D collider)
         {
+            DrawRaycast(collider);
+            CompareTag(collider);
+        }
+
+
+
+        /// <summary>
+        /// Draw a Raycast2D to collision direction.
+        /// </summary>
+        private void DrawRaycast(Collider2D collider)
+        {
             Vector2 targetDirection = collider.transform.position - transform.position;
             int layerMask = ~(LayerMask.GetMask("Ignore Raycast", "Physics"));
 
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, targetDirection, Mathf.Infinity, layerMask);
+            hit = Physics2D.Raycast(transform.position, targetDirection, Mathf.Infinity, layerMask);
+            
+            // FIXME DEBUG
             Debug.DrawRay(transform.position, targetDirection, Color.green);
-
-            if (hit.collider != null && hit.transform.CompareTag("Player"))
-            {
-                OnDetection?.Invoke();
-            }
-
-            if (collider.gameObject.tag == "Player") 
-            {
-                Debug.Log("We Have Intruder !1!1");
-                GameObject.Find("Player").gameObject.SetActive(false);
-            }
         }
 
+
+
+        /// <summary>
+        /// Compares tag from given collider.
+        /// </summary>
+        private void CompareTag(Collider2D collider)
+        {
+            if (hit.collider != null && hit.transform.CompareTag("Player"))
+            {
+                detectedEvent.Invoke();
+            }
+        }
         #endregion
         
     }

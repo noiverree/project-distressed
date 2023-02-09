@@ -1,5 +1,4 @@
 // Author   : Rifqi Candra
-// Date     : 22 January 2023
 
 using Pathfinding;
 using UnityEngine;
@@ -14,7 +13,6 @@ namespace ProjectDistressed.Hunter
         //==============================================================================
         // Variables
         //==============================================================================
-        
         private AIDestinationSetter destinationSetter;
         private Animator animator;
 
@@ -26,34 +24,24 @@ namespace ProjectDistressed.Hunter
         //==============================================================================
         // Functions
         //==============================================================================
-        
         #region MonoBehaviour methods
-
         private void Awake()
         {
             destinationSetter = gameObject.GetComponent<AIDestinationSetter>();
             animator = gameObject.GetComponentInParent<Animator>();
         }
-
-
-
-        private void Start()
-        {
-            DetectionController.OnDetection += Chase;
-        }
-
         #endregion  
 
-        #region ProjectDistressed methods
 
+
+        #region ProjectDistressed methods
         /// <summary>
-        /// Chase the target.
+        /// Starts to chase the target.
         /// </summary>
-        private void Chase()
+        public void Chase()
         {
             destinationSetter.target = targetTransform;
         }
-
         #endregion
     }
 }

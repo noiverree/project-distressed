@@ -261,6 +261,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelLoader
       objectReference: {fileID: 0}
+    - target: {fileID: 1739373229889148701, guid: 2720dd5231c0a0b448927615ae813d67, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1739373229889148706, guid: 2720dd5231c0a0b448927615ae813d67, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -462,7 +466,7 @@ RectTransform:
   m_GameObject: {fileID: 942763537}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.55, y: 0.55, z: 0.55}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1039469542}
@@ -470,7 +474,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -102.00001, y: -31.000008}
+  m_AnchoredPosition: {x: -87.8, y: -32.3}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &942763539
@@ -632,7 +636,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1338172914}
   - {fileID: 942763538}
@@ -641,8 +645,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -220.54446, y: -57.019737}
-  m_SizeDelta: {x: -441.0889, y: -114.0395}
+  m_AnchoredPosition: {x: -216.60938, y: -62.07634}
+  m_SizeDelta: {x: -1166.8013, y: -610.3279}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1039469543
 MonoBehaviour:
@@ -765,7 +769,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -827,7 +831,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
@@ -892,15 +895,15 @@ RectTransform:
   m_GameObject: {fileID: 1338172913}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1039469542}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -102, y: -31}
+  m_AnchoredPosition: {x: -87.80003, y: -32.300003}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1338172915
@@ -1358,8 +1361,10 @@ GameObject:
   - component: {fileID: 1676292755}
   - component: {fileID: 1676292757}
   - component: {fileID: 1676292756}
+  - component: {fileID: 1676292759}
+  - component: {fileID: 1676292758}
   m_Layer: 2
-  m_Name: DetectionRange
+  m_Name: AI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1392,6 +1397,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a60f887c94cd5617db3b484a336b22f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  detectedEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1676292759}
+        m_TargetAssemblyTypeName: ProjectDistressed.Hunter.ChaseAI, Assembly-CSharp
+        m_MethodName: Chase
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!58 &1676292757
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1408,6 +1428,33 @@ CircleCollider2D:
   m_Offset: {x: 0.053841975, y: 0.21847935}
   serializedVersion: 2
   m_Radius: 1.4805357
+--- !u!114 &1676292758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1676292754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9679e68a0f1144e79c664d9a11ca121, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  target: {fileID: 0}
+--- !u!114 &1676292759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1676292754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30e233c0582e5507fbd65aef7b4a060a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTransform: {fileID: 2056048042}
 --- !u!1 &1853014507
 GameObject:
   m_ObjectHideFlags: 0
@@ -1418,7 +1465,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1853014508}
   - component: {fileID: 1853014510}
-  - component: {fileID: 1853014509}
   m_Layer: 3
   m_Name: Physics
   m_TagString: Untagged
@@ -1441,19 +1487,6 @@ Transform:
   m_Father: {fileID: 1572581333}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1853014509
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1853014507}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30e233c0582e5507fbd65aef7b4a060a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetTransform: {fileID: 0}
 --- !u!58 &1853014510
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1533,7 +1566,7 @@ MonoBehaviour:
   heuristic: 2
   heuristicScale: 1
   threadCount: 1
-  maxFrameTime: 1
+  maxFrameTime: 10
   batchGraphUpdates: 0
   graphUpdateBatchingInterval: 0.2
   euclideanEmbedding:
