@@ -1,5 +1,4 @@
 // Author   : 
-// Date     : 00 Month 202X
 
 #ROOTNAMESPACEBEGIN#
     /// <summary>

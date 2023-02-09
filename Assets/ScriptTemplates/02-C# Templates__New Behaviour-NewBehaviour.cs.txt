@@ -1,5 +1,4 @@
 // Author   : 
-// Date     : 00 Month 202X
 
 using System.Collections;
 using System.Collections.Generic;
